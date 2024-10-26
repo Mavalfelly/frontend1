@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom';
 
-const TrackList = ({ tracks }) => {
+const TrackList = ({ tracks, handleDeleteTrack, handlePlayTrack }) => {
   return (
-    <div className='card'>
+    <div className='card-container' >
       {tracks.map((track) => (
-        <div key={track._id}>
-          <h3>{track.title}</h3>
-          <Link to={`/tracks/${track._id}`}>View Details</Link>
-          <br/>
-          <Link to={`/tracks/${track._id}/edit`}>
-            <button>Edit</button>
-          </Link>
+        <div key={track._id} className='card'>
+            <h3 className='title'>{track.title} by {track.artist}</h3>
+            <div className='button'>
+                <button onClick={() => handlePlayTrack(track)}>Play</button>
+                <Link to={`/tracks/${track._id}/edit`}>
+                    <button>Edit</button>
+                </Link>
+                <button onClick={() => handleDeleteTrack(track._id)}>Delete</button>
+            </div>
         </div>
       ))}
     </div>

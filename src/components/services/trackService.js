@@ -23,7 +23,7 @@ export const create = async (trackFormData) => {
         const res = await fetch(BASE_URL,{
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'  // Add this line
+                'Content-Type': 'application/json' 
             },
             body: JSON.stringify(trackFormData)
         })
@@ -41,6 +41,17 @@ export const update = async (trackId, trackFormData) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(trackFormData),
+        });
+        return res.json();
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export const remove = async (trackId, trackFormData) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${trackId}`, {
+            method: 'DELETE',
         });
         return res.json();
     } catch (err) {

@@ -15,13 +15,16 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #f05a28;
   text-decoration: inherit;
 }
 a:hover {
   color: #535bf2;
 }
-
+.button{
+  display: flex;
+  justify-content: space-evenly;
+}
 body {
   margin: 0;
   display: flex;

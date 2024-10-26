@@ -1,4 +1,4 @@
-// TrackForm.jsx
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { show } from '../services/trackService';
@@ -11,7 +11,7 @@ const TrackForm = (props) => {
     coverArtUrl: "",
   });
 
-  // Load existing track data for editing
+ 
   useEffect(() => {
     if (trackId) {
       const fetchTrack = async () => {
@@ -44,42 +44,41 @@ const TrackForm = (props) => {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
-        {/* Title input */}
-        <label htmlFor="title-input">Title</label>
-        <input
-          required
-          type="text"
-          name="title"
-          id="title-input"
-          value={formData.title}
-          onChange={handleChange}
-        />
-        <br />
-        {/* Artist input */}
-        <label htmlFor="artist-input">Artist</label>
-        <input
-          required
-          type="text"
-          name="artist"
-          id="artist-input"
-          value={formData.artist}
-          onChange={handleChange}
-        />
-        <br />
-        {/* Cover Art URL input */}
-        <label htmlFor="coverArtUrl-input">Cover Art</label>
-        <input
-          type="text"
-          name="coverArtUrl"
-          id="coverArtUrl-input"
-          value={formData.coverArtUrl}
-          onChange={handleChange}
-        />
-        <br />
-        {/* Submit button */}
-        <button type="submit">{trackId ? "Update Track" : "Add Track"}</button>
-      </form>
+      <div className='form-container'>
+        <form onSubmit={handleSubmit}>
+
+          <label htmlFor="title-input">Title: </label>
+          <input
+            required
+            type="text"
+            name="title"
+            id="title-input"
+            value={formData.title}
+            onChange={handleChange}
+          />
+          <br />
+          <label htmlFor="artist-input">Artist: </label>
+          <input
+            required
+            type="text"
+            name="artist"
+            id="artist-input"
+            value={formData.artist}
+            onChange={handleChange}
+          />
+          <br />
+          <label htmlFor="coverArtUrl-input">Cover Art: </label>
+          <input
+            type="text"
+            name="coverArtUrl"
+            id="coverArtUrl-input"
+            value={formData.coverArtUrl}
+            onChange={handleChange}
+          />
+          <br />
+          <button type="submit">{trackId ? "Update Track" : "Add Track"}</button>
+        </form>
+      </div>
     </main>
   );
 };
